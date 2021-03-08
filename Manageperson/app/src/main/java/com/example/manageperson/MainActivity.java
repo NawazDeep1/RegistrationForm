@@ -1,5 +1,6 @@
 package com.example.manageperson;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -8,12 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import model.Person;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ValueEventListener {
 
     EditText edID,edName,edAge;
     Button btnAdd, btnUpdate, btnDelete, btnFind, btnFindAll;
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 delete();
                 break;
             case R.id.btnFind :
+                find();
                 break;
             case R.id.btnFindAll :
                 break;
@@ -102,5 +107,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
 
         }
+    }
+
+    private void find() {
+        String id = edID.getText().toString();
+        personChild = FirebaseDatabase.getInstance().getReference().child("Person").child(id);
+        personChild.addValueEventListener(this);
+
+
+    }
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        if(dataSnapshot.exists()){
+            //the data exist
+            String name = dataSnapshot.child("name").getValue().toString();
+            String age = dataSnapshot.child("age").getValue().toString();
+            edName.setText(name);
+            edAge.setText(age);
+        }
+        else
+        {
+            //no data fro give id
+            Toast .makeText(this,"the Document with ithe "+edID.getText().toString()+" does not exist ",Toast.LENGTH_LONG).show();
+            edID.setText(null);
+            edAge.setText(null);
+            edName.setText(null);
+            edID.requestFocus();
+        }
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
     }
 }
