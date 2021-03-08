@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 add();
                 break;
             case R.id.btnDelete :
-
+                delete();
                 break;
             case R.id.btnFind :
                 break;
@@ -65,6 +65,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 update();
                 break;
         }
+    }
+
+    private void delete() {
+        String id = edID.getText().toString();
+        personChild =FirebaseDatabase.getInstance().getReference().child("Person").child(id);
+        personChild.removeValue();
+        Toast.makeText(this,"The Document with the ID "+id+"is Deleted",Toast.LENGTH_LONG).show();
     }
 
     private void update() {
