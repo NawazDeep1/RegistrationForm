@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1035788616570",
+    "firebase_url": "https://managepersonprj-default-rtdb.firebaseio.com",
+    "project_id": "managepersonprj",
+    "storage_bucket": "managepersonprj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035788616570:android:cc1aee7fbc03dfdf304cc3",
+        "android_client_info": {
+          "package_name": "com.example.manageperson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035788616570-u8bad9vnmil6lagb8u6t59vavrf8g02c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6sWrcvwFZFmW0oIt8WiU0_joSNlis5Yo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035788616570-u8bad9vnmil6lagb8u6t59vavrf8g02c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
