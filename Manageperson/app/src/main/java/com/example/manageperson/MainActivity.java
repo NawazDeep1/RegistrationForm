@@ -128,7 +128,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else
         {
             //no data fro give id
-            Toast .makeText(this,"the Document with ithe "+edID.getText().toString()+" does not exist ",Toast.LENGTH_LONG).show();
+            Toast .makeText(this,"the Document with ithe "
+                    +edID.getText().toString()+" does not exist ",Toast.LENGTH_LONG).show();
             edID.setText(null);
             edAge.setText(null);
             edName.setText(null);
